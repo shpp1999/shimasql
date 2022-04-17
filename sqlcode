@@ -1,0 +1,82 @@
+Create database store;
+use store ; 
+create table countries ( 
+name_ varchar (255) , 
+continent_name varchar (255) not null ) 
+unique (name_) ; 
+
+
+use store ; 
+Create table users (
+id int primary key , 
+email varchar (255)  , 
+GENDER VARCHAR (9),
+check (GENDER in ('Male', 'Female')),
+date_of_birth DATE NOT NULL,
+created_at DATETIME DEFAULTCURRENT_TIMESTAMP
+unique (email) ; 
+
+
+use store ; 
+Create table orders (
+user_id int primary key , 
+status varchar (255)  , 
+check (status in ('start', 'finish')),
+created_at DATETIME DEFAULT CURRENT_TIMESTAMP );
+ 
+use store ; 
+Create table order_products (
+order_id int primary key , 
+product_id int  ,
+quantity int DEFAULT 0 ); 
+
+ use store ; 
+Create table products (
+id int primary key ,
+name varchar(10) not null ,
+price int DEFAULT 0 ,
+status varchar(10) ,
+check (status in ('valid', 'expired')),
+created_at DATETIME DEFAULT CURRENT_TIMESTAMP );
+
+use store ; 
+alter table countries 
+add code_ int primary key ; 
+
+use store ; 
+alter table users 
+add full_name varchar (20) , add country_code int ;
+
+
+use store ; 
+INSERT INTO countries ( code_ , name_, continent_name)
+VALUES ('11', 'Shima' , 'Asia');
+
+
+use store ; 
+INSERT INTO users ( id , full_name , email , GENDER , date_of_birth  , created_at , country_code )
+VALUES ('11', 'Shima' , 'shima@123' ,'f', 1 , '11/11/1999', '11'  );
+
+
+
+
+use store ; 
+INSERT INTO orders ( user_id , status , created_at  )
+VALUES ('11', 'start' , 'shima@123' , '11/11/1999' );
+
+use store ; 
+INSERT INTO products  ( id , name , price , status , created_at  )
+VALUES ('11', 's' , '11' , 'expired' , '11'/11/1990 ); 
+
+use store ; 
+INSERT INTO order_products ( order_id , product_id , quantity )
+VALUES ('11', '11' ,'11'  );
+
+
+use store ; 
+INSERT INTO products  ( id , name , price , status , created_at  )
+VALUES ('22', 'shhhh' , '11' , 'expired' , '11'/11/1990 );
+
+use store ; 
+delete from  products  where id = 22 ; 
+
