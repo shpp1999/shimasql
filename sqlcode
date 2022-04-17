@@ -80,3 +80,8 @@ VALUES ('22', 'shhhh' , '11' , 'expired' , '11'/11/1990 );
 use store ; 
 delete from  products  where id = 22 ; 
 
+select code_ , country_code 
+from countries 
+inner join users
+on countries.code_ = users.country_code  ;  
+
